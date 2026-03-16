@@ -2,6 +2,12 @@
 import requests
 import psycopg2
 import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 
 
 def run_pipeline():
@@ -13,11 +19,11 @@ def run_pipeline():
     data = response.json()
 
     conn = psycopg2.connect(
-        host="localhost",
-        database="crypto",
-        user="postgres",
-        password="Fudozajabys",
-        port="5433"
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
     )
     cur = conn.cursor()
 
