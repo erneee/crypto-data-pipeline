@@ -14,8 +14,8 @@ conn = psycopg2.connect(
     host="localhost",
     database="crypto",
     user="postgres",
-    password="Fudozajabys",
-    port="5433"
+    password="postgres",
+    port="5432"
 )
 query = "SELECT * FROM crypto_price ORDER BY timestamp"
 df = pd.read_sql(query, conn)

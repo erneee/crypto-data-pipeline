@@ -8,8 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
-
 def run_pipeline():
     coins = ["bitcoin", "ethereum", "solana"]
 
@@ -26,7 +24,15 @@ def run_pipeline():
         port=os.getenv("DB_PORT")
     )
     cur = conn.cursor()
-
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS crypto_price (
+        id SERIAL PRIMARY KEY,
+        coin VARCHAR(50) NOT NULL,
+        price_usd NUMERIC(20, 8) NOT NULL,
+        timestamp TIMESTAMP NOT NULL DEFAULT NOW()
+    )
+    """)
+    conn.commit()
     for coin in coins:
         price = float(data[coin]["usd"])
         timestamp = datetime.datetime.now()
@@ -36,6 +42,8 @@ def run_pipeline():
         )
         print(f"{coin} price įrašyta:", price)
 
+
     conn.commit()
     cur.close()
     conn.close()
+
