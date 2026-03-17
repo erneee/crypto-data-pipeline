@@ -31,3 +31,7 @@ streamlit run dashboard.py
 ## Dashboard
 
 ![dashboard](dashboard.png)![img.png](img.png)
+
+## Run with Docker
+
+docker-compose up -d
