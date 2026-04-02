@@ -3,7 +3,10 @@
 This project collects cryptocurrency prices from the CoinGecko API and stores them in PostgreSQL.  
 A Streamlit dashboard visualizes the collected data in real time.
 
+---
+
 ## Architecture
+
 
 CoinGecko API
 ↓
@@ -13,25 +16,39 @@ PostgreSQL Database
 ↓
 Streamlit Dashboard
 
-## Technologies
+
+---
+
+## ⚙️ Technologies
 
 - Python
 - PostgreSQL
 - Streamlit
+- Docker
 - CoinGecko API
 
-## Run pipeline
+---
+
+## 🚀 How to Run
+
+### Run with Docker (recommended)
+
+```bash
+docker-compose up --build
+
+Then open:
+
+http://localhost:8501
+Run locally (without Docker)
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Run pipeline:
 
 python run_pipeline_loop.py
 
-## Run dashboard
+Run dashboard:
 
 streamlit run dashboard.py
-
-## Dashboard
-
-![dashboard](dashboard.png)![img.png](img.png)
-
-## Run with Docker
-
-docker-compose up -d

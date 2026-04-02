@@ -24,5 +24,20 @@ services:
       DB_PASSWORD: postgres
       DB_PORT: 5432
 
+  dashboard:
+    build: .
+    container_name: crypto_dashboard
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: crypto
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
+    ports:
+      - "8501:8501"
+    command: streamlit run dashboard.py --server.address=0.0.0.0 --server.port=8501
+
 volumes:
   postgres_data:
