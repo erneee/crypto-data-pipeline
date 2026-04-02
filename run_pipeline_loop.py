@@ -2,7 +2,7 @@
 import time
 from pipeline import run_pipeline
 
-INTERVAL = 10  # 10 sec
+INTERVAL = 300  # 120 sec
 
 while True:
     run_pipeline()
